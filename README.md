@@ -1,10 +1,43 @@
-# IS2-Blackjack
-Si asumimos que una empresa nos ha pedido que hagamos un software para despedir a sus trabajadores humanos, nos quedaría esta kata.
-Consta de las siguientes normas:
-  1. El juego es el blackjack, 1 vs 1 entre 3 jugadores y el Croupier.
-  2. Solo puede ganar uno de los 2 jugadores, a no ser que quede empate.
-  3. Blackjack será únicamente sacar figura + A (Por ejemplo: "Ace", "Jack" -> 21, Blackjack; "King", "5", "6" -> 21, No Blackjack).
-  4. Si el croupier llega a 17 o más no puede volver a coger carta.
-  >Al programa se le presentarán las cartas de todos los jugadores + 2 cartas del croupier. El programa tendrá que devolver una lista con los jugadores que hayan ganado.
-  
- 
+# IS2 - Máquina de jugar a Black Jack.
+Un nuevo casino ha llegado a Las Vegas, pero este casino no quiere tener personal humano, sino implementar una serie de sistemas informáticos que automatizan los procesos de juego. Después de buscar referencias y recomendaciones..., la Dirección del Casino ha decidido
+contratarte para desarrollar estos sistemas.
+
+Tu tarea es completar la función que reparte cartas para el crupier (última fase de la partida de
+Black Jack) y devuelve los jugadores que han ganado.</br>
+Las reglas son las siguientes:</br>
+1. Cada partida consta de 3 jugadores ("Player1", "Player2", "Player3") que juegan de forma individual contra el crupier (los jugadores no juegan entre ellos).</br>
+2. Cada carta tiene su valor: los números valen lo que indique su número; "J", "Q" y "K" valen 10; "A" puede valer 11 o 1.</br>
+3. Si un jugador excede de 21 puntos pierde</br>
+4. El crupier debe sacar carta del montón hasta que su mano tenga 17 puntos o más.</br>
+5. Un jugador tiene un Black Jack cuando tiene 2 cartas, una con valor 10 y la otra es una "A".</br>
+6. Si el jugador tiene Black Jack, gana, a menos que el crupier también tenga Black Jack.</br>
+7. Cuando el crupier saca una carta, el crupier siempre saca la primera carta del motón.</br>
+--- 
+</br>
+
+## Diseño
+Para ello, necesitamos crear una función, getWinners(...), que recibe 5 parámetros
+1. Las cartas del Player1
+2. Las cartas del Player2
+3. Las cartas del Player3
+4. Las cartas del Croupier
+5. El montón de cartas pendientes de sacar
+6. La función genera un array con los jugadores que ganan. 
+---
+</br>
+
+## Casos
+### Caso 1
+Player 1: "J", "A" (21, Black Jack)</br>
+Player 2: "10", "5", "6" (21)</br>
+Player 3: "3", "6", "A", "3", "A", "K" (24)</br>
+Croupier: "9", "7" (16)</br>
+Deck: "5", "4", "K", "2"</br></br>
+getWinners(...) -----> [Player1]</br>
+### Caso 2</br>
+Player 1: "10", "K" (20)</br>
+Player 2: "10", "2", "6" (18)</br>
+Player 3: "8", "8", "5" (21)</br>
+Croupier: "5", "10" (15)</br>
+Deck: "A" , "3" , "K" , "2"</br></br>
+getWinners(...) -----> [Player1, Player3]</br>
