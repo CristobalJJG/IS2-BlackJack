@@ -13,8 +13,7 @@ public class PipCard extends Card{
     
     @Override
     public boolean equals(Object c){
-        if(c instanceof PipCard){
-            PipCard p = (PipCard) c;
+        if(c instanceof PipCard p){
             return(p.getValue() == getValue());
         }
         return false;

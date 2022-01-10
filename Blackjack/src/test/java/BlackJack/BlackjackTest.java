@@ -121,7 +121,6 @@ public class BlackjackTest {
 
         assertArrayEquals(expectedWinners, winners);
         notice("Fin Get Winners Case2");
-    }
-    
+    }   
 }
 

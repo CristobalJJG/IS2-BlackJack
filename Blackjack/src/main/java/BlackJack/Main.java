@@ -15,9 +15,9 @@ public class Main {
     
     private static void case1(){
         Player p1 = new Player("Player 1"), 
-           p2 = new Player("Player 2"), 
-           p3 = new Player("Player 3"), 
-           croupier = new Player("Croupier");
+        p2 = new Player("Player 2"), 
+        p3 = new Player("Player 3"), 
+        croupier = new Player("Croupier");
         ArrayList<Card> deck = new ArrayList<>();
         
         

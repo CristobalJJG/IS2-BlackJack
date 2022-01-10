@@ -21,7 +21,7 @@ public class Player {
         for (Card c : cards) {addCard(c);}
     }
     
-    public List getHand(){
+    public List<Card> getHand(){
         return new ArrayList(hand);
     }
     

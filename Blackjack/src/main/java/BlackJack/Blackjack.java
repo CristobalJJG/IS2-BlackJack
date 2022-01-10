@@ -12,17 +12,17 @@ public class Blackjack {
     private final static int MAX_CROUPIER = 17;
 
     public static String[] getWinners(Player player1, Player player2, 
-            Player player3, Player crourpier, List<Card> deck){
+        Player player3, Player croupier, List<Card> deck){
         
         List<Player> Players = new ArrayList<>();
         Players.add(player1); Players.add(player2); Players.add(player3); 
         
         List<Player> winners = new ArrayList<>();
         
-        fillCroupier(crourpier, deck);
+        fillCroupier(croupier, deck);
         
         for(Player player : Players){
-            List<Card> handCrourpier = crourpier.getHand(); 
+            List<Card> handCrourpier = croupier.getHand(); 
             List<Card> handPlayer = player.getHand(); 
         
             if(isBlackJack(handCrourpier)){
@@ -31,8 +31,10 @@ public class Blackjack {
             if(isWinner(handCrourpier, handPlayer)){
                 winners.add(player);
             }
+            System.out.println(player.getName() + " Suma: " + getSumHand(player.getHand()));
         }
-        
+        System.out.println(croupier.getName() + " Suma: " + getSumHand(croupier.getHand()));
+
         
         String[] winnersName = new String[winners.size()];
         for (int i = 0; i < winnersName.length; i++) {
@@ -43,12 +45,12 @@ public class Blackjack {
     }
     
     private static boolean isWinner(List<Card> handCrourpier, 
-            List<Card> handPlayer) {   
+        List<Card> handPlayer) {   
         if(isBlackJack(handPlayer)){return true;}
-        int sumCropuier = getSumHand(handCrourpier);
+        int sumCroupier = getSumHand(handCrourpier);
         int sumPlayer = getSumHand(handPlayer);
         if(sumPlayer <= BJ){
-            if((sumCropuier > 21) || (sumCropuier < sumPlayer)){
+            if((sumCroupier > BJ) || (sumCroupier < sumPlayer)){
                 return true;
             }       
         }
@@ -75,7 +77,7 @@ public class Blackjack {
         }
         
         if(aces != 0){
-                while(sum>21){ sum -= 10; }
+                while(sum>21 && aces>0){ sum -= 10; aces--; }
             }
         return sum;
     }
@@ -94,5 +96,8 @@ public class Blackjack {
             sum = getSumHand(hand);
             i++; 
         }
+    }
+
+    private Blackjack() {
     }
 }
